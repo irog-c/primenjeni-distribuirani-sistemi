@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-webserver
+  labels:
+    name: webserver
+spec:
+  containers:
+    - name: webserver
+      image: nginx
+      ports:
+        - name: webserver
+          containerPort: 80
+          protocol: TCP

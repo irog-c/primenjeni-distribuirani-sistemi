@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: api-call-job
+spec: 
+  template:         
+    metadata:
+      name: api-call-job
+    spec:
+      containers:
+      - name: api-call-job
+        image: python:latest
+        command:
+        - python
+        - apicall.py
