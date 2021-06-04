@@ -16,6 +16,7 @@ public class Domaci implements Watcher
 {
 	private static String host = "localhost:2181";
 	private static int votesCast = 0;
+	private static int createdNodes = 0;
 	
 	private ZooKeeper zk;
 	private boolean isLeader = false;
@@ -71,8 +72,17 @@ public class Domaci implements Watcher
 			zk.getData("/votes", true, null); // Put watcher
 			isLeader = true;
 		}
+		
 		if(!nodeExists("/votes"))
 			System.out.println("Node /votes does not exist!");
+		else
+		{
+			createdNodes++;
+			if(createdNodes == 4)
+			{
+				zk.setData("/leader", "start".getBytes(), -1);
+			}
+		}
 	}
 	
 	public void stop() throws Exception
