@@ -49,7 +49,7 @@ public class AverageTemp
 		
 		public String toString() 
 		{
-			return "average: " + average + ", count: " + count;
+			return "average: " + average/(double)count + ", count: " + count;
 		}
 		
 	}
@@ -91,7 +91,7 @@ public class AverageTemp
 			}
 			
 			result.setCount(sum);
-			result.setAverage(average/(double)sum);
+			result.setAverage(average);
 			context.write(key, result);
 		}
 	}
